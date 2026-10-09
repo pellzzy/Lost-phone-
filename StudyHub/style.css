@@ -1,0 +1,386 @@
+
+/* General settings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f6fb;
+    color: #263248;
+    line-height: 1.7;
+    padding: 30px 15px;
+}
+
+/* Main container */
+.wrap {
+    max-width: 850px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(25, 45, 80, 0.08);
+}
+
+/* Header */
+header {
+    background: #173b70;
+    color: #ffffff;
+    padding: 40px 35px;
+}
+
+header h1 {
+    font-size: 32px;
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+header p {
+    font-size: 15px;
+    color: #e0eaff;
+    margin-bottom: 15px;
+}
+
+header .tip {
+    background: #ffffff;
+    color: #173b70;
+    padding: 15px 18px;
+    border-left: 5px solid #f2b544;
+    border-radius: 6px;
+    margin-top: 22px;
+    margin-bottom: 0;
+}
+
+header .tip strong {
+    color: #173b70;
+}
+
+/* Main content */
+main {
+    padding: 30px 35px;
+}
+
+/* Checklist sections */
+.phase {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    margin-bottom: 28px;
+    overflow: hidden;
+    background: #ffffff;
+}
+
+.phase h2 {
+    padding: 20px;
+    font-size: 21px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.phase h2 span {
+    font-size: 13px;
+    font-weight: normal;
+    opacity: 0.85;
+}
+
+/* Different section colours */
+.phase.now h2 {
+    background: #fff0ee;
+    color: #a72f27;
+    border-left: 5px solid #df5148;
+}
+
+.phase.today h2 {
+    background: #fff7e6;
+    color: #93600c;
+    border-left: 5px solid #e8ad36;
+}
+
+.phase.week h2 {
+    background: #eaf7ef;
+    color: #237548;
+    border-left: 5px solid #35a56b;
+}
+
+/* Remove default list numbering */
+.phase ol {
+    list-style: none;
+    counter-reset: step;
+    padding: 5px 20px;
+}
+
+.phase ol li {
+    counter-increment: step;
+    border-bottom: 1px solid #edf0f5;
+}
+
+.phase ol li:last-child {
+    border-bottom: none;
+}
+
+/* Checklist items */
+.phase ol li label {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.phase ol li label:hover {
+    background: #f8faff;
+}
+
+.phase ol li label::before {
+    content: counter(step);
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #edf2fb;
+    color: #173b70;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 2px;
+}
+
+/* Checkboxes */
+.phase input[type="checkbox"] {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    margin-top: 7px;
+    cursor: pointer;
+    accent-color: #26734d;
+}
+
+/* Item text */
+.phase ol li label div {
+    flex: 1;
+    min-width: 0;
+}
+
+.phase ol li strong {
+    display: block;
+    color: #263248;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.phase ol li small {
+    display: block;
+    color: #647187;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* Completed checklist items */
+.phase ol li label:has(input:checked) {
+    background: #f0faf4;
+}
+
+.phase ol li label:has(input:checked) strong {
+    color: #687a6d;
+    text-decoration: line-through;
+}
+
+.phase ol li label:has(input:checked)::before {
+    background: #26734d;
+    color: #ffffff;
+}
+
+/* Things to avoid */
+.avoid {
+    background: #fff5f4;
+    border: 1px solid #f2d4d0;
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 10px;
+}
+
+.avoid h2 {
+    font-size: 21px;
+    color: #a72f27;
+    margin-bottom: 15px;
+}
+
+.avoid ul {
+    padding-left: 22px;
+}
+
+.avoid li {
+    color: #554448;
+    font-size: 14px;
+    margin-bottom: 10px;
+    padding-left: 4px;
+}
+
+.avoid li:last-child {
+    margin-bottom: 0;
+}
+
+.avoid li::marker {
+    color: #d84c43;
+}
+
+/* Printing information */
+.print-note {
+    background: #edf3ff;
+    color: #294d80;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 25px;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background: #f8faff;
+    border-top: 1px solid #e5eaf2;
+    padding: 25px 35px;
+    color: #6b778b;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Tablet and mobile screens */
+@media (max-width: 600px) {
+    body {
+        padding: 12px 8px;
+    }
+
+    .wrap {
+        border-radius: 10px;
+    }
+
+    header {
+        padding: 28px 20px;
+    }
+
+    header h1 {
+        font-size: 26px;
+    }
+
+    header p {
+        font-size: 14px;
+    }
+
+    main {
+        padding: 22px 15px;
+    }
+
+    .phase h2 {
+        font-size: 18px;
+        padding: 16px;
+    }
+
+    .phase ol {
+        padding: 5px 12px;
+    }
+
+    .phase ol li label {
+        gap: 10px;
+        padding: 16px 2px;
+    }
+
+    .phase ol li label::before {
+        width: 26px;
+        height: 26px;
+        font-size: 12px;
+    }
+
+    .phase ol li strong {
+        font-size: 14px;
+    }
+
+    .phase ol li small {
+        font-size: 12px;
+    }
+
+    .avoid {
+        padding: 20px 16px;
+    }
+
+    .avoid h2 {
+        font-size: 19px;
+    }
+
+    .avoid li {
+        font-size: 13px;
+    }
+
+    footer {
+        padding: 22px 18px;
+    }
+}
+
+/* Print-friendly page */
+@media print {
+    body {
+        background: #ffffff;
+        padding: 0;
+        color: #000000;
+        font-size: 11pt;
+    }
+
+    .wrap {
+        max-width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    header {
+        background: #ffffff;
+        color: #000000;
+        padding: 20px 0;
+    }
+
+    header p,
+    header .tip {
+        color: #000000;
+    }
+
+    header .tip {
+        border: 1px solid #cccccc;
+    }
+
+    main {
+        padding: 15px 0;
+    }
+
+    .phase,
+    .avoid {
+        break-inside: avoid;
+    }
+
+    .phase h2,
+    .avoid {
+        print-color-adjust: economy;
+        -webkit-print-color-adjust: economy;
+    }
+
+    .phase ol li label {
+        padding: 10px 3px;
+    }
+
+    .print-note {
+        background: #ffffff;
+        color: #000000;
+        border: 1px solid #cccccc;
+    }
+
+    footer {
+        background: #ffffff;
+        padding: 15px 0;
+    }
+}
